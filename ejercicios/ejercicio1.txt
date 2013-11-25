@@ -1,0 +1,19 @@
+Implementar una Interfaz Gráfica de Usuario (GUI) de consola para un CRUD (Create-Read-Update-Delete) de una entidad llamada Libro.
+
+La entidad Libro tiene los siguientes atributos:
+	# id : Integer
+	- titulo : String
+	- autor : String
+	- editorial : String
+	- anio : Date (java.util.Date)
+	- tipo : Integer
+
+La aplicación debe estar compuesta por las siguientes capas: DAO, Service y GUI.
+
+La capa DAO inicialmente será falsa (utilizando objetos "mockup"). Puede implementarla a través de una clase "singleton" con un vector interno de libros. Por ejemplo:
+	class LibroMockDao {
+		private List<Libro> libros;
+		// métodos para agregar, modificar, eliminar, obtener y obtenerTodos
+	}
+
+El menú de la aplicación debe seguir el modelo propuesto en gui.Principal

@@ -4,6 +4,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -12,6 +13,7 @@ import es.indra.formacion.springhibernate.service.ILibroService;
 
 public class Principal {
 	private Scanner scanner;
+	@Autowired
 	private ILibroService libroService;
 
 	public Principal() {
@@ -111,7 +113,7 @@ public class Principal {
 	
 	public static void main(String[] args) {
 		ApplicationContext ctx = 
-				new ClassPathXmlApplicationContext("es/indra/formacion/springhibernate/config/applicationContext.xml");
+				new ClassPathXmlApplicationContext("es/indra/formacion/springhibernate/config/applicationContext-annotation.xml");
 		
 		ctx.getBean("principal", Principal.class).iniciar();
 	}

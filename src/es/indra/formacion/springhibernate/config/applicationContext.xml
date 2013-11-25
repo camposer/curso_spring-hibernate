@@ -30,7 +30,11 @@
 		<property name="libroDao" ref="libroDao" />
 	</bean>
 
-	<bean id="principal" class="es.indra.formacion.springhibernate.gui.Principal">
+	<bean
+		id="principal"
+		class="es.indra.formacion.springhibernate.gui.Principal"
+		scope="prototype">
+		
 		<property name="libroService" ref="libroService"/>
 	</bean>
 	<!-- END: Aplicación Libros -->

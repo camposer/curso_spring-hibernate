@@ -3,10 +3,13 @@ package es.indra.formacion.springhibernate.service;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import es.indra.formacion.springhibernate.dao.ILibroDao;
 import es.indra.formacion.springhibernate.model.Libro;
 
 public class LibroService implements ILibroService { 
+	@Autowired
 	private ILibroDao libroDao;
 
 	public void init() {

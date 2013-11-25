@@ -1,4 +1,4 @@
-package es.indra.formacion.springhibernate;
+package es.indra.formacion.springhibernate.basico;
 
 public class HelloWorld implements IHolaMundo {
 	private String message;

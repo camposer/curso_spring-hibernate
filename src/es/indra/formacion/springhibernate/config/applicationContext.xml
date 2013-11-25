@@ -4,17 +4,34 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
-	<bean id="helloWorld" class="es.indra.formacion.springhibernate.HelloWorld">
+	<!-- BEGIN: Ejemplos básicos -->
+	<bean id="helloWorld" class="es.indra.formacion.springhibernate.basico.HelloWorld">
 		<constructor-arg name="message" value="Initialized at the constructor"/>
 	</bean>
 	
-	<bean id="holaMundo" class="es.indra.formacion.springhibernate.HolaMundo"
+	<bean id="holaMundo" class="es.indra.formacion.springhibernate.basico.HolaMundo"
 			scope="prototype">
 		<constructor-arg name="mensaje" value="Inicializado en el constructor"/>
 	</bean>
 
-	<bean id="envoltorio" class="es.indra.formacion.springhibernate.Envoltorio">
+	<bean id="envoltorio" class="es.indra.formacion.springhibernate.basico.Envoltorio">
 		<property name="holaMundo" ref="helloWorld"/>
 	</bean>
+	<!-- END: Ejemplos básicos -->
 
+	<!-- BEGIN: Aplicación Libros -->
+	<bean id="libroDao" class="es.indra.formacion.springhibernate.dao.LibroMockDao" />
+
+	<bean 
+		id="libroService" 
+		class="es.indra.formacion.springhibernate.service.LibroService"
+		init-method="init">
+		
+		<property name="libroDao" ref="libroDao" />
+	</bean>
+
+	<bean id="principal" class="es.indra.formacion.springhibernate.gui.Principal">
+		<property name="libroService" ref="libroService"/>
+	</bean>
+	<!-- END: Aplicación Libros -->
 </beans>

@@ -1,4 +1,4 @@
-package es.indra.formacion.springhibernate;
+package es.indra.formacion.springhibernate.basico;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

@@ -17,3 +17,10 @@ La capa DAO inicialmente será falsa (utilizando objetos "mockup"). Puede implem
 	}
 
 El menú de la aplicación debe seguir el modelo propuesto en: gui.Principal
+
+La instanciación de servicios y DAOs debe realizarse mediante Spring.
+
+NOTA: 
+	- Para llevar un String a Date puede utilizar la clase SimpleDateFormat, por ejemplo:
+	String sfecha = "2013/01/20";
+	java.util.Date fecha = new SimpleDateFormat("yyyy/MM/dd").parse(sfecha);

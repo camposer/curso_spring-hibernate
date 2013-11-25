@@ -1,18 +1,18 @@
 package es.indra.formacion.springhibernate;
 
 public class Envoltorio {
-	private HolaMundo cualquierCosa;
+	private IHolaMundo cualquierCosa;
 
-	public HolaMundo getHolaMundo() {
+	public IHolaMundo getHolaMundo() {
 		return cualquierCosa;
 	}
 
-	public void setHolaMundo(HolaMundo cualquierCosa) {
+	public void setHolaMundo(IHolaMundo cualquierCosa) {
 		this.cualquierCosa = cualquierCosa;
 	}
 	
 	public void imprimir() {
-		System.out.println("Hola: " + cualquierCosa.getMensaje());
+		System.out.println("Envoltorio: " + cualquierCosa.getMensaje());
 	}
 	
 }

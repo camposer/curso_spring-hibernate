@@ -4,14 +4,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
 
+	<bean id="helloWorld" class="es.indra.formacion.springhibernate.HelloWorld">
+		<constructor-arg name="message" value="Initialized at the constructor"/>
+	</bean>
+	
 	<bean id="holaMundo" class="es.indra.formacion.springhibernate.HolaMundo"
 			scope="prototype">
-		
 		<constructor-arg name="mensaje" value="Inicializado en el constructor"/>
 	</bean>
 
 	<bean id="envoltorio" class="es.indra.formacion.springhibernate.Envoltorio">
-		<property name="holaMundo" ref="holaMundo"/>
+		<property name="holaMundo" ref="helloWorld"/>
 	</bean>
 
 </beans>

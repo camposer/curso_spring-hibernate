@@ -11,10 +11,19 @@ public class Test {
 						+ "springhibernate/config/applicationContext.xml");
 
 		// Pidiendo beans según el ID al Contexto
-		HolaMundo holaMundo = ctx.getBean("holaMundo", HolaMundo.class);
-		holaMundo.setMensaje("Hola Juan");
+		HolaMundo holaMundo1 = ctx.getBean("holaMundo", HolaMundo.class); // En el constructor define Hola Pedro		
+		System.out.println(holaMundo1.getMensaje()); 
 		
-		System.out.println(holaMundo.getMensaje());
-			
+		holaMundo1.setMensaje("Cualquier cosa");
+		System.out.println(holaMundo1.getMensaje()); 
+		
+		HolaMundo holaMundo2 = ctx.getBean("holaMundo", HolaMundo.class);
+		System.out.println(holaMundo2.getMensaje());
+
+		System.out.println("\n****************\n");
+		Envoltorio envoltorio = ctx.getBean("envoltorio", Envoltorio.class);
+		envoltorio.imprimir();
+
+	
 	}
 }

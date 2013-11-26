@@ -1,0 +1,1 @@
+Refactorizar el código de Libreria para que ahora utilice DAOs que funcionen con JPA/Hibernate

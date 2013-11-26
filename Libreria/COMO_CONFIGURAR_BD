@@ -1,0 +1,10 @@
+Para configurar la conexión a la BD utilizando Eclipse:
+1.- Descargar db-derby-bin-X.zip
+2.- Descromprimir 
+3.- Iniciar la BD: bin\startNetworkServer.bat
+
+En el Eclipse:
+4.- Ir a la perspectiva de "Database Development"
+5.- Agregar nueva conexión
+6.- Seleccionar como Driver el DerbyClient (lib\derbyclient.jar)
+

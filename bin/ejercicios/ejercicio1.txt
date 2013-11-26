@@ -1,0 +1,26 @@
+Implementar una Interfaz Gráfica de Usuario (GUI) de consola para el CRUD (Create-Read-Update-Delete) de la entidad Libro.
+
+Un Libro tiene los siguientes atributos:
+	# id : Integer
+	- titulo : String
+	- autor : String
+	- editorial : String
+	- anio : Date (java.util.Date)
+	- tipo : Integer
+
+La aplicación debe estar compuesta por las siguientes capas: DAO, Service y GUI. La capa DAO contiene toda la lógica de acceso a datos. La capa Service contiene toda la lógica de negocios (Ej. cálculos y manejo de transacciones). La capa GUI contiene toda la lógica de presentación (Ej. presentación, captura y validación de datos)
+
+La capa DAO inicialmente será falsa (utilizando objetos "mockup"). Puede implementarla a través de una clase "singleton" con un vector interno de libros. Por ejemplo:
+	class LibroMockDao {
+		private List<Libro> libros;
+		// métodos para agregar, modificar, eliminar, obtener y obtenerTodos
+	}
+
+El menú de la aplicación debe seguir el modelo propuesto en: gui.Principal
+
+La instanciación de servicios y DAOs debe realizarse mediante Spring.
+
+NOTA: 
+	- Para llevar un String a Date puede utilizar la clase SimpleDateFormat, por ejemplo:
+	String sfecha = "2013/01/20";
+	java.util.Date fecha = new SimpleDateFormat("yyyy/MM/dd").parse(sfecha);

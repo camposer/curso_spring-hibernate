@@ -18,7 +18,7 @@ public class Libreria implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int id;
+	private Integer id;
 
 	@Column(nullable=false, length=9)
 	private String cif;
@@ -40,11 +40,11 @@ public class Libreria implements Serializable {
 	public Libreria() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 

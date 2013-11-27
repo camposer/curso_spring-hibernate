@@ -24,26 +24,26 @@ public class Test {
 			Libro l1 = new Libro();
 			l1.setTitulo("Titulo nuevorrrr");
 			l1.setAutor("Autor nuevo");
-			l1.setPrecio(30);
+			l1.setPrecio(30D);
 
 			em.persist(l1); // INSERT
 			
-			/*
+			
 			Libro l2 = new Libro();
-			l2.setId(99);
-			l2.setTitulo("Titulo nuevo");
-			l2.setAutor("Autor nuevo");
-			l2.setPrecio(30);
+			l2.setId(800);
+			l2.setTitulo("Titulo nuevoaaa");
+			l2.setAutor("Autor nuevoaaa");
+			l2.setPrecio(30D);
 
 			em.persist(l2); // => Falla porque el objeto no pertenece a la sesión
-			*/
+			
 			
 			// Agregar
 			Libro l3 = new Libro();
 			l3.setId(98);
 			l3.setTitulo("Titulo nuevoxxx");
 			l3.setAutor("Autor nuevo");
-			l3.setPrecio(30);
+			l3.setPrecio(30D);
 
 			Libro l4 = em.merge(l3); // => Si el objeto con el id existe lo actualiza
 

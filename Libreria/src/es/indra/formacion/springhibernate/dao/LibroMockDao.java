@@ -1,6 +1,5 @@
 package es.indra.formacion.springhibernate.dao;
 
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -67,30 +66,4 @@ public class LibroMockDao implements ILibroDao {
 		return resultado;
 	}
 	
-	public static void main(String[] args) {
-		LibroMockDao lmd = new LibroMockDao();
-		// Agregar
-		Libro l1 = new Libro("Titulo 1", "Autor 1", "Editorial 1", new Date(), Libro.TIPO_TAPA_DURA);
-		lmd.agregar(l1);
-		lmd.agregar(new Libro("Titulo 2", "Autor 2", "Editorial 2", new Date(), Libro.TIPO_DE_BOLSILLO));
-		System.out.println("\nAgregar");
-		System.out.println(lmd.obtenerTodos());
-		
-		// Modificar
-		l1.setTitulo("Libro modificado");
-		lmd.modificar(l1);
-		System.out.println("\nModificar");
-		System.out.println(lmd.obtenerTodos());
-		
-		// Eliminar
-		lmd.eliminar(1);
-		System.out.println("\nEliminar");
-		System.out.println(lmd.obtenerTodos());
-		
-		// Obtener uno
-		System.out.println("\nObtener");
-		System.out.println(lmd.obtener(2));
-		
-	}
-
 }

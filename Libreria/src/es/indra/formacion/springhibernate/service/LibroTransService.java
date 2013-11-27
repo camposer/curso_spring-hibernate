@@ -3,11 +3,13 @@ package es.indra.formacion.springhibernate.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import es.indra.formacion.springhibernate.dao.ILibroDao;
 import es.indra.formacion.springhibernate.model.Libro;
 
-public class LibroService implements ILibroService { 
+@Transactional
+public class LibroTransService implements ILibroService { 
 	@Autowired
 	private ILibroDao libroDao;
 

@@ -18,14 +18,14 @@ public class Compra implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int id;
+	private Integer id;
 
 	@Temporal(TemporalType.DATE)
 	@Column(nullable=false)
 	private Date fecha;
 
 	@Column(nullable=false)
-	private double montante;
+	private Double montante;
 
 	//bi-directional many-to-one association to Lector
 	@ManyToOne
@@ -45,11 +45,11 @@ public class Compra implements Serializable {
 	public Compra() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -61,11 +61,11 @@ public class Compra implements Serializable {
 		this.fecha = fecha;
 	}
 
-	public double getMontante() {
+	public Double getMontante() {
 		return this.montante;
 	}
 
-	public void setMontante(double montante) {
+	public void setMontante(Double montante) {
 		this.montante = montante;
 	}
 

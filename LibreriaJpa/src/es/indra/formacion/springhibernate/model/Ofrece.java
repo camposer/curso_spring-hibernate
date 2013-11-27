@@ -17,9 +17,9 @@ public class Ofrece implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int id;
+	private Integer id;
 
-	private double precio;
+	private Double precio;
 
 	//bi-directional many-to-one association to Libreria
 	@ManyToOne
@@ -34,19 +34,19 @@ public class Ofrece implements Serializable {
 	public Ofrece() {
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return this.precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 

@@ -1,7 +1,9 @@
 package es.indra.formacion.springhibernate.model;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.util.List;
 
 
@@ -16,15 +18,15 @@ public class Libro implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(unique=true, nullable=false)
-	private int id;
+	private Integer id;
 
 	@Column(nullable=false, length=100)
 	private String autor;
 
 	@Column(nullable=false)
-	private double precio;
+	private Double precio;
 
 	@Column(nullable=false, length=100)
 	private String titulo;
@@ -39,12 +41,18 @@ public class Libro implements Serializable {
 
 	public Libro() {
 	}
+	
+	public Libro(String titulo, String autor, Double precio) {
+		this.titulo = titulo;
+		this.autor = autor;
+		this.precio = precio;
+	}
 
-	public int getId() {
+	public Integer getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -56,11 +64,11 @@ public class Libro implements Serializable {
 		this.autor = autor;
 	}
 
-	public double getPrecio() {
+	public Double getPrecio() {
 		return this.precio;
 	}
 
-	public void setPrecio(double precio) {
+	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
 

@@ -1,7 +1,5 @@
 package es.indra.formacion.springhibernate.gui;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,33 +18,15 @@ public class Principal {
 		this.scanner = new Scanner(System.in);
 	}
 	
-	private Date obtenerFecha(String anio) {
-		Calendar cal = Calendar.getInstance();
-		cal.set(Calendar.YEAR, Integer.parseInt(anio));
-		
-		return cal.getTime();
-	}
-	
-	private Integer obtenerTipo(String tipo) {
-		if (tipo.toString().equals(Libro.TIPO_DE_BOLSILLO))
-			return Libro.TIPO_DE_BOLSILLO;
-		else
-			return Libro.TIPO_TAPA_DURA;
-	}
-
 	private void agregar() {
 		System.out.println("Título?");
 		String titulo = scanner.nextLine();
 		System.out.println("Autor?");
 		String autor = scanner.nextLine();
-		System.out.println("Editorial?");
-		String editorial = scanner.nextLine();
-		System.out.println("Año?");
-		String anio = scanner.nextLine();
-		System.out.println("Tipo?");
-		String tipo = scanner.nextLine();
+		System.out.println("Precio?");
+		String precio = scanner.nextLine();
 		
-		Libro l = new Libro(titulo, autor, editorial, obtenerFecha(anio), obtenerTipo(tipo));
+		Libro l = new Libro(titulo, autor, Double.parseDouble(precio));
 		
 		libroService.agregarLibro(l);
 	}
@@ -58,14 +38,10 @@ public class Principal {
 		String titulo = scanner.nextLine();
 		System.out.println("Autor?");
 		String autor = scanner.nextLine();
-		System.out.println("Editorial?");
-		String editorial = scanner.nextLine();
-		System.out.println("Año?");
-		String anio = scanner.nextLine();
-		System.out.println("Tipo?");
-		String tipo = scanner.nextLine();
+		System.out.println("Precio?");
+		String precio = scanner.nextLine();
 		
-		Libro l = new Libro(titulo, autor, editorial, obtenerFecha(anio), obtenerTipo(tipo));
+		Libro l = new Libro(titulo, autor, Double.parseDouble(precio));
 		l.setId(Integer.parseInt(sid));
 		
 		libroService.modificarLibro(l);

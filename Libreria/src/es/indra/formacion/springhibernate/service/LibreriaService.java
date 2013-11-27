@@ -3,10 +3,12 @@ package es.indra.formacion.springhibernate.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import es.indra.formacion.springhibernate.dao.ILibreriaDao;
 import es.indra.formacion.springhibernate.model.Libreria;
 
+@Transactional
 public class LibreriaService implements ILibreriaService { 
 	@Autowired
 	private ILibreriaDao libreriaDao;

@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -13,64 +15,32 @@ import org.springframework.stereotype.Component;
 @Component
 public abstract class GenericJpaDao<T, K> implements IDao<T, K>  {
 	@Autowired
-	EntityManagerFactory entityManagerFactory;
-	
+	@PersistenceContext
 	EntityManager entityManager;
-	EntityTransaction entityTransaction;
-	boolean autoCommit = true;
+	
 	Class<T> clase;
 
 	@SuppressWarnings("unchecked")
-	public GenericJpaDao(boolean autoCommit) {
+	public GenericJpaDao() {
 		this.clase = (Class<T>) ((ParameterizedType) getClass()
                 		.getGenericSuperclass()).getActualTypeArguments()[0];
 		
-		this.autoCommit = autoCommit;
-	}
-	
-	public GenericJpaDao() {
-		this(true);
-	}
-
-	public void init() {
-		if (autoCommit) {
-			this.entityManager = entityManagerFactory.createEntityManager();
-			this.entityTransaction = this.entityManager.getTransaction();
-		}
 	}
 	
 	@Override
 	public void agregar(T obj) {
-		if (autoCommit)
-			entityTransaction.begin();
-		
-		entityManager.persist(obj);
-		
-		if (autoCommit)
-			entityTransaction.commit();
+		entityManager.persist(obj);		
 	}
 
 	@Override
 	public void modificar(T obj) {
-		if (autoCommit)
-			entityTransaction.begin();
-		
 		entityManager.merge(obj);
-		
-		if (autoCommit)
-			entityTransaction.commit();
 	}
 
 	@Override
 	public void eliminar(K id) {
-		if (autoCommit)
-			entityTransaction.begin();
-		
 		T t = entityManager.find(clase, id);
 		entityManager.remove(t);
-		
-		if (autoCommit)
-			entityTransaction.commit();
 	}
 
 	@SuppressWarnings("unchecked")

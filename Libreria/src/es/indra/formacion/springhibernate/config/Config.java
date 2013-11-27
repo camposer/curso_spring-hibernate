@@ -1,9 +1,5 @@
 package es.indra.formacion.springhibernate.config;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
@@ -16,7 +12,6 @@ import es.indra.formacion.springhibernate.dao.ILibroDao;
 import es.indra.formacion.springhibernate.dao.LectorJpaDao;
 import es.indra.formacion.springhibernate.dao.LibreriaJpaDao;
 import es.indra.formacion.springhibernate.dao.LibroJpaDao;
-//import es.indra.formacion.springhibernate.dao.LibroMockDao;
 import es.indra.formacion.springhibernate.gui.Principal;
 import es.indra.formacion.springhibernate.service.CompraService;
 import es.indra.formacion.springhibernate.service.ICompraService;
@@ -29,27 +24,24 @@ import es.indra.formacion.springhibernate.service.LibroService;
 
 @Configuration
 public class Config {
-	@Bean(initMethod="init")
+	@Bean
 	public ILibroDao libroDao() {
-		//return new LibroMockDao();
 		return new LibroJpaDao();
 	}
 
-	@Bean(initMethod="init")
+	@Bean
 	public ILibreriaDao libreriaDao() {
 		return new LibreriaJpaDao();
 	}
 
-	// No es autoCommit
 	@Bean
 	public ILectorDao lectorDao() {
-		return new LectorJpaDao(false);
+		return new LectorJpaDao();
 	}
 
-	// No es autoCommit
 	@Bean
 	public ICompraDao compraDao() {
-		return new CompraJpaDao(false);
+		return new CompraJpaDao();
 	}
 
 	@Bean
@@ -77,15 +69,4 @@ public class Config {
 	public Principal principal() {
 		return new Principal();
 	}
-	
-	@Bean
-	public EntityManagerFactory entityManagerFactory() {
-		return Persistence.createEntityManagerFactory("LibreriaJpa");
-	}
-	
-	@Bean
-	public EntityManager entityManager() {
-		return entityManagerFactory().createEntityManager();
-	}
-
 }

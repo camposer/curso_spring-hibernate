@@ -13,7 +13,7 @@
 	<context:annotation-config/><!-- Habilitando el uso de anotaciones -->
 	<context:component-scan base-package="es.indra.formacion.springhibernate.config"/>
 	
-	<!-- bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
 		<property name="persistenceUnitName" value="LibreriaJpa" />
 	</bean>
 	
@@ -23,5 +23,5 @@
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
 	
-	<tx:annotation-driven transaction-manager="transactionManager"/-->
+	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

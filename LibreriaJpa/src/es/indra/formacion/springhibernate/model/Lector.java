@@ -103,4 +103,11 @@ public class Lector implements Serializable {
 		return compra;
 	}
 
+	@Override
+	public String toString() {
+		return "Lector [id=" + id + ", apellido=" + apellido + ", direccion="
+				+ direccion + ", fechaNacimiento=" + fechaNacimiento
+				+ ", nombre=" + nombre + "]";
+	}
+
 }

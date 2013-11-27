@@ -53,4 +53,24 @@ public class LibroService implements ILibroService {
 	public List<Libreria> obtenerLibreriasPorLibro(Integer id) {
 		return libreriaDao.obtenerLibreriasPorLibro(id);
 	}
+
+	@Override
+	public List<String> obtenerAutores() {
+		return libroDao.obtenerAutores();
+	}
+
+	@Override
+	public Libro obtenerLibroMasVendido() {
+		return libroDao.obtenerLibroMasVendido();
+	}
+
+	@Override
+	public Object[] obtenerAutorMasVendidoVentas() {
+		return libroDao.obtenerAutorMasVendidoVentas();
+	}
+
+	@Override
+	public List<Object[]> obtenerLibrosVendidosPorAnio() {
+		return libroDao.obtenerLibrosVendidosPorAnio();
+	}
 }

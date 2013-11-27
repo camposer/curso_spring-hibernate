@@ -1,8 +1,8 @@
 1.- Agregar consultas:
 -- Datos de Librerías
--- Datos de Personas
+-- Datos de Lectores
 -- Lectores mayores de 18 años 
--- Lista de Personas que son autores
+-- Lista de Autores
 -- Libro más vendido
 -- Autor más vendido y cuánto vendió
 -- Libros vendidos por año (ordenados descendentemente por año)

@@ -12,4 +12,8 @@ public interface ILibroService {
 	public List<Libro> obtenerLibros();
 	public Libro obtenerLibro(Integer id);
 	public List<Libreria> obtenerLibreriasPorLibro(Integer id);
+	public List<String> obtenerAutores();
+	public Libro obtenerLibroMasVendido();
+	public Object[] obtenerAutorMasVendidoVentas();
+	public List<Object[]> obtenerLibrosVendidosPorAnio();
 }

@@ -10,7 +10,14 @@ import org.apache.commons.lang.time.DateUtils;
 import es.indra.formacion.springhibernate.model.Lector;
 
 public class LectorJpaDao extends GenericJpaDao<Lector, Integer> implements ILectorDao {
-
+	public LectorJpaDao() {
+		super();
+	}
+	
+	public LectorJpaDao(boolean autoCommit) {
+		super(autoCommit);
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Lector> obtenerLectoresMayorEdad() {

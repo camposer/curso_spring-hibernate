@@ -13,8 +13,12 @@ public class LibreriaService implements ILibreriaService {
 	
 	@Override
 	public List<Libreria> obtenerLibrerias() {
-		// TODO Auto-generated method stub
 		return libreriaDao.obtenerTodos();
+	}
+
+	@Override
+	public Libreria obtenerLibreria(Integer id) {
+		return libreriaDao.obtener(id);
 	}
 	
 }

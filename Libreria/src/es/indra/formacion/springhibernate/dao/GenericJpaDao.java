@@ -24,6 +24,8 @@ public abstract class GenericJpaDao<T, K> implements IDao<T, K>  {
 	public GenericJpaDao(boolean autoCommit) {
 		this.clase = (Class<T>) ((ParameterizedType) getClass()
                 		.getGenericSuperclass()).getActualTypeArguments()[0];
+		
+		this.autoCommit = autoCommit;
 	}
 	
 	public GenericJpaDao() {
@@ -80,5 +82,10 @@ public abstract class GenericJpaDao<T, K> implements IDao<T, K>  {
 	@Override
 	public T obtener(K id) {
 		return entityManager.find(clase, id);
+	}
+	
+	public void setEntityManager(EntityManager em) {
+		this.entityManager = em;
+		
 	}
 }

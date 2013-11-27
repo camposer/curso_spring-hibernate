@@ -1,5 +1,6 @@
 package es.indra.formacion.springhibernate.gui;
 
+import java.util.Date;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import es.indra.formacion.springhibernate.model.Lector;
 import es.indra.formacion.springhibernate.model.Libreria;
 import es.indra.formacion.springhibernate.model.Libro;
+import es.indra.formacion.springhibernate.service.ICompraService;
 import es.indra.formacion.springhibernate.service.ILectorService;
 import es.indra.formacion.springhibernate.service.ILibreriaService;
 import es.indra.formacion.springhibernate.service.ILibroService;
@@ -21,6 +23,8 @@ public class Principal {
 	private ILibreriaService libreriaService;
 	@Autowired
 	private ILectorService lectorService;
+	@Autowired
+	private ICompraService compraService;
 
 	public Principal() {
 		this.scanner = new Scanner(System.in);
@@ -68,14 +72,17 @@ public class Principal {
 		}
 	}
 
+	public void listarLibreriaPorLibro(Integer libroId) {
+		for (Libreria l : libroService.obtenerLibreriasPorLibro(libroId)) {
+			System.out.println(l);
+		}
+	}
+
 	public void listarLibreriaPorLibro() {
 		System.out.println("Id?");
 		String sid = scanner.nextLine();
-
-		Integer id = Integer.parseInt(sid);
-		for (Libreria l : libroService.obtenerLibreriasPorLibro(id)) {
-			System.out.println(l);
-		}
+		
+		listarLibreriaPorLibro(Integer.parseInt(sid));
 	}
 	
 	public void listarLibrerias() {
@@ -120,6 +127,46 @@ public class Principal {
 		}
 	}
 	
+	public void comprar() {
+		listar();
+		System.out.println("libroId? ");
+		String slibroId = scanner.nextLine();
+		Integer libroId = Integer.parseInt(slibroId);
+		
+		listarLibreriaPorLibro(libroId);
+		System.out.println("libreriaId? ");
+		String slibreriaId = scanner.nextLine();
+		Integer libreriaId = Integer.parseInt(slibreriaId);
+		
+		System.out.println("Lector: ");
+		System.out.println("Nombre? ");
+		String nombre = scanner.nextLine();
+		System.out.println("Apellido? ");
+		String apellido = scanner.nextLine();
+		System.out.println("Dirección? ");
+		String direccion = scanner.nextLine();
+		System.out.println("Fecha de nac? ");
+		String sfechaNacimiento = scanner.nextLine();
+
+		Date fecha = new Date(); // TODO: Se debería hacer un parse de sfechaNacimiento
+		
+		// Buscando referencias
+		Libro libro = libroService.obtenerLibro(libroId);
+		Libreria libreria = libreriaService.obtenerLibreria(libreriaId);
+		
+		// Construyendo el lector
+		Lector lector = new Lector();
+		lector.setNombre(nombre);
+		lector.setApellido(apellido);
+		lector.setDireccion(direccion);
+		lector.setFechaNacimiento(fecha);
+		
+		// Comprando...
+		compraService.comprar(libro, libreria, lector);
+		
+		
+	}
+	
 	public void iniciar() {
 		while (true) {
 			System.out.println();
@@ -130,13 +177,18 @@ public class Principal {
 			System.out.println("4. Listar");
 			System.out.println("Reportes:");
 			System.out.println("5. Listar librerías en donde es ofrecido un libro");
-			System.out.println("6. Listar librerías");
+			System.out.println("6. LLECTOR (id, apellido, direccion, FECHA_NACIMIENTO, nombre) values (default, ?, ?, ?, ?)
+Hibernate: values identity_val_local()
+Hibernate: insert into COMPRA (id, fecha, LECTOR_ID, LIBRERIA_ID, LIBRO_ID, montante) values (default, ?, ?, ?, ?, ?)
+Hibernate: values identityistar librerías");
 			System.out.println("7. Listar lectores");
 			System.out.println("8. Listar lectores mayores de edad");
 			System.out.println("9. Listar de autores");
 			System.out.println("10. Listar libro más vendido");
 			System.out.println("11. Listar autor más vendido y cuánto vendió");
 			System.out.println("12. Listar libros vendido por año");
+			System.out.println("Compra:");
+			System.out.println("13. Comprar");
 			System.out.println("? ");
 			
 			String opcion = scanner.nextLine();
@@ -165,6 +217,8 @@ public class Principal {
 				listarAutorMasVendidoVentas();
 			else if (opcion.equals("12"))
 				listarLibrosVendidosPorAnio();
+			else if (opcion.equals("13"))
+				comprar();
 		}
 	}
 	

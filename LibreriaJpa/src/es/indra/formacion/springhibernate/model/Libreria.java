@@ -116,4 +116,11 @@ public class Libreria implements Serializable {
 		return ofrece;
 	}
 
+	@Override
+	public String toString() {
+		return "Libreria [id=" + id + ", cif=" + cif + ", direccion="
+				+ direccion + ", nombre=" + nombre + "]";
+	}
+
+	
 }

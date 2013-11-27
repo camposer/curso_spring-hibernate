@@ -1,0 +1,11 @@
+1.- Agregar consultas:
+-- Datos de Librerías
+-- Datos de Personas
+-- Lectores mayores de 18 años 
+-- Lista de Personas que son autores
+-- Libro más vendido
+-- Autor más vendido y cuánto vendió
+-- Libros vendidos por año (ordenados descendentemente por año)
+
+2.- Agregar compras. La aplicación debe ofrecer una funcionalidad para comprar libros en una librería por un lector. Para asociar el lector, se podrá agregar uno nuevo o uno pre-existente.
+IMPORTANTE: Ojo con el manejo de transacciones!

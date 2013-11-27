@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import es.indra.formacion.springhibernate.model.Libreria;
 import es.indra.formacion.springhibernate.model.Libro;
 import es.indra.formacion.springhibernate.service.ILibroService;
 
@@ -60,6 +61,16 @@ public class Principal {
 		}
 	}
 
+	public void listarLibreriaPorLibro() {
+		System.out.println("Id?");
+		String sid = scanner.nextLine();
+
+		Integer id = Integer.parseInt(sid);
+		for (Libreria l : libroService.obtenerLibreriasPorLibro(id)) {
+			System.out.println(l);
+		}
+	}
+	
 	public void iniciar() {
 		while (true) {
 			System.out.println();
@@ -68,6 +79,7 @@ public class Principal {
 			System.out.println("2. Modificar");
 			System.out.println("3. Eliminar");
 			System.out.println("4. Listar");
+			System.out.println("5. Listar librerías en donde es ofrecido un libro");
 			System.out.println("? ");
 			
 			String opcion = scanner.nextLine();
@@ -80,6 +92,8 @@ public class Principal {
 				eliminar();
 			else if (opcion.equals("4"))
 				listar();
+			else if (opcion.equals("5"))
+				listarLibreriaPorLibro();
 		}
 	}
 	

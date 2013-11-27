@@ -7,7 +7,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 
+import es.indra.formacion.springhibernate.dao.ILibreriaDao;
 import es.indra.formacion.springhibernate.dao.ILibroDao;
+import es.indra.formacion.springhibernate.dao.LibreriaJpaDao;
 import es.indra.formacion.springhibernate.dao.LibroJpaDao;
 //import es.indra.formacion.springhibernate.dao.LibroMockDao;
 import es.indra.formacion.springhibernate.gui.Principal;
@@ -20,6 +22,12 @@ public class Config {
 	public ILibroDao libroDao() {
 		//return new LibroMockDao();
 		return new LibroJpaDao();
+	}
+
+	@Bean(initMethod="init")
+	public ILibreriaDao libreriaDao() {
+		//return new LibroMockDao();
+		return new LibreriaJpaDao();
 	}
 
 	@Bean

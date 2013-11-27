@@ -4,13 +4,17 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import es.indra.formacion.springhibernate.dao.ILibreriaDao;
 import es.indra.formacion.springhibernate.dao.ILibroDao;
+import es.indra.formacion.springhibernate.model.Libreria;
 import es.indra.formacion.springhibernate.model.Libro;
 
 public class LibroService implements ILibroService { 
 	@Autowired
 	private ILibroDao libroDao;
-
+	@Autowired
+	private ILibreriaDao libreriaDao;
+	
 	@Override
 	public void agregarLibro(Libro libro) {
 		// TODO: Agregar lógica de negocios
@@ -43,5 +47,10 @@ public class LibroService implements ILibroService {
 
 	public void setLibroDao(ILibroDao libroDao) {
 		this.libroDao = libroDao;
+	}
+
+	@Override
+	public List<Libreria> obtenerLibreriasPorLibro(Integer id) {
+		return libreriaDao.obtenerLibreriasPorLibro(id);
 	}
 }
